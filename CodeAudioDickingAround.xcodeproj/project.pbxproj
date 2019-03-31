@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC5E1896224DFB8C00C08B41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5E1895224DFB8C00C08B41 /* main.m */; };
+		CC5E189E224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5E189D224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m */; };
+		CC5E18A1224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC5E18A0224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm */; };
+		CC5E18A5225095AA00C08B41 /* Chapter2_WaveformGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC5E18A3225095AA00C08B41 /* Chapter2_WaveformGenerator.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC5E1890224DFB8C00C08B41 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CC5E1892224DFB8C00C08B41 /* CodeAudioDickingAround */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeAudioDickingAround; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5E1895224DFB8C00C08B41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CC5E189C224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter1_OverviewOfCoreAudio.h; sourceTree = "<group>"; };
+		CC5E189D224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chapter1_OverviewOfCoreAudio.m; sourceTree = "<group>"; };
+		CC5E189F224F271700C08B41 /* Chapter2_TheStoryOfSound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter2_TheStoryOfSound.h; sourceTree = "<group>"; };
+		CC5E18A0224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Chapter2_TheStoryOfSound.mm; sourceTree = "<group>"; };
+		CC5E18A3225095AA00C08B41 /* Chapter2_WaveformGenerator.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Chapter2_WaveformGenerator.mm; sourceTree = "<group>"; };
+		CC5E18A4225095AA00C08B41 /* Chapter2_WaveformGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter2_WaveformGenerator.h; sourceTree = "<group>"; };
+		CC5E18A72250A84600C08B41 /* Chapter2_WaveformDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter2_WaveformDefines.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC5E188F224DFB8C00C08B41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC5E1889224DFB8C00C08B41 = {
+			isa = PBXGroup;
+			children = (
+				CC5E1894224DFB8C00C08B41 /* CodeAudioDickingAround */,
+				CC5E1893224DFB8C00C08B41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC5E1893224DFB8C00C08B41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC5E1892224DFB8C00C08B41 /* CodeAudioDickingAround */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC5E1894224DFB8C00C08B41 /* CodeAudioDickingAround */ = {
+			isa = PBXGroup;
+			children = (
+				CC5E1895224DFB8C00C08B41 /* main.m */,
+				CC5E18A6225095DC00C08B41 /* Chapter 1 - Overview of Core Audio */,
+				CC5E18A22250958F00C08B41 /* Chapter 2 - The Story of Sound */,
+			);
+			path = CodeAudioDickingAround;
+			sourceTree = "<group>";
+		};
+		CC5E18A22250958F00C08B41 /* Chapter 2 - The Story of Sound */ = {
+			isa = PBXGroup;
+			children = (
+				CC5E189F224F271700C08B41 /* Chapter2_TheStoryOfSound.h */,
+				CC5E18A0224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm */,
+				CC5E18A3225095AA00C08B41 /* Chapter2_WaveformGenerator.mm */,
+				CC5E18A4225095AA00C08B41 /* Chapter2_WaveformGenerator.h */,
+				CC5E18A72250A84600C08B41 /* Chapter2_WaveformDefines.h */,
+			);
+			path = "Chapter 2 - The Story of Sound";
+			sourceTree = "<group>";
+		};
+		CC5E18A6225095DC00C08B41 /* Chapter 1 - Overview of Core Audio */ = {
+			isa = PBXGroup;
+			children = (
+				CC5E189C224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.h */,
+				CC5E189D224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m */,
+			);
+			path = "Chapter 1 - Overview of Core Audio";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC5E1891224DFB8C00C08B41 /* CodeAudioDickingAround */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC5E1899224DFB8C00C08B41 /* Build configuration list for PBXNativeTarget "CodeAudioDickingAround" */;
+			buildPhases = (
+				CC5E188E224DFB8C00C08B41 /* Sources */,
+				CC5E188F224DFB8C00C08B41 /* Frameworks */,
+				CC5E1890224DFB8C00C08B41 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CodeAudioDickingAround;
+			productName = CodeAudioDickingAround;
+			productReference = CC5E1892224DFB8C00C08B41 /* CodeAudioDickingAround */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC5E188A224DFB8C00C08B41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Kiran Kumar";
+				TargetAttributes = {
+					CC5E1891224DFB8C00C08B41 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+				};
+			};
+			buildConfigurationList = CC5E188D224DFB8C00C08B41 /* Build configuration list for PBXProject "CodeAudioDickingAround" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CC5E1889224DFB8C00C08B41;
+			productRefGroup = CC5E1893224DFB8C00C08B41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC5E1891224DFB8C00C08B41 /* CodeAudioDickingAround */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC5E188E224DFB8C00C08B41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC5E18A5225095AA00C08B41 /* Chapter2_WaveformGenerator.mm in Sources */,
+				CC5E1896224DFB8C00C08B41 /* main.m in Sources */,
+				CC5E189E224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m in Sources */,
+				CC5E18A1224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CC5E1897224DFB8C00C08B41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CC5E1898224DFB8C00C08B41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CC5E189A224DFB8C00C08B41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK2JKTE2J9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CC5E189B224DFB8C00C08B41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XK2JKTE2J9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC5E188D224DFB8C00C08B41 /* Build configuration list for PBXProject "CodeAudioDickingAround" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC5E1897224DFB8C00C08B41 /* Debug */,
+				CC5E1898224DFB8C00C08B41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC5E1899224DFB8C00C08B41 /* Build configuration list for PBXNativeTarget "CodeAudioDickingAround" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC5E189A224DFB8C00C08B41 /* Debug */,
+				CC5E189B224DFB8C00C08B41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC5E188A224DFB8C00C08B41 /* Project object */;
+}
