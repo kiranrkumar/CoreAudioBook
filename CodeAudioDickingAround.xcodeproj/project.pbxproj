@@ -11,6 +11,7 @@
 		CC5E189E224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5E189D224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m */; };
 		CC5E18A1224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC5E18A0224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm */; };
 		CC5E18A5225095AA00C08B41 /* Chapter2_WaveformGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC5E18A3225095AA00C08B41 /* Chapter2_WaveformGenerator.mm */; };
+		CC5E18AB2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC5E18AA2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		CC5E18A3225095AA00C08B41 /* Chapter2_WaveformGenerator.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Chapter2_WaveformGenerator.mm; sourceTree = "<group>"; };
 		CC5E18A4225095AA00C08B41 /* Chapter2_WaveformGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter2_WaveformGenerator.h; sourceTree = "<group>"; };
 		CC5E18A72250A84600C08B41 /* Chapter2_WaveformDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter2_WaveformDefines.h; sourceTree = "<group>"; };
+		CC5E18A92250B56200C08B41 /* Chapter3_AudioDataFormats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter3_AudioDataFormats.h; sourceTree = "<group>"; };
+		CC5E18AA2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Chapter3_AudioDataFormats.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,7 @@
 				CC5E1895224DFB8C00C08B41 /* main.m */,
 				CC5E18A6225095DC00C08B41 /* Chapter 1 - Overview of Core Audio */,
 				CC5E18A22250958F00C08B41 /* Chapter 2 - The Story of Sound */,
+				CC5E18A82250B52F00C08B41 /* Chapter 3 - Audio Data Formats */,
 			);
 			path = CodeAudioDickingAround;
 			sourceTree = "<group>";
@@ -93,6 +97,15 @@
 				CC5E189D224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m */,
 			);
 			path = "Chapter 1 - Overview of Core Audio";
+			sourceTree = "<group>";
+		};
+		CC5E18A82250B52F00C08B41 /* Chapter 3 - Audio Data Formats */ = {
+			isa = PBXGroup;
+			children = (
+				CC5E18A92250B56200C08B41 /* Chapter3_AudioDataFormats.h */,
+				CC5E18AA2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm */,
+			);
+			path = "Chapter 3 - Audio Data Formats";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +168,7 @@
 				CC5E1896224DFB8C00C08B41 /* main.m in Sources */,
 				CC5E189E224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m in Sources */,
 				CC5E18A1224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm in Sources */,
+				CC5E18AB2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

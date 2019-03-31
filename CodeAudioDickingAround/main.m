@@ -6,15 +6,12 @@
 //  Copyright © 2019 Kiran Kumar. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <AudioToolbox/AudioToolbox.h>
-
-#import "Chapter2_TheStoryOfSound.h"
+#import "Chapter3_AudioDataFormats.h"
 
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Chapter2_WriteAudioFile(44100, 3, 440.0, KKWaveformType_Sine);
+        Chapter3_WriteMultipleASBDs();
     }
     return 0;
 }
