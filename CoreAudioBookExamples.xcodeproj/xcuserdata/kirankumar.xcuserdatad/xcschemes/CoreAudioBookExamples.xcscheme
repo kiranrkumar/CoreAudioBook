@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CC5E1891224DFB8C00C08B41"
-               BuildableName = "CodeAudioDickingAround"
-               BlueprintName = "CodeAudioDickingAround"
-               ReferencedContainer = "container:CodeAudioDickingAround.xcodeproj">
+               BuildableName = "CoreAudioBookExamples"
+               BlueprintName = "CoreAudioBookExamples"
+               ReferencedContainer = "container:CoreAudioBookExamples.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CC5E1891224DFB8C00C08B41"
-            BuildableName = "CodeAudioDickingAround"
-            BlueprintName = "CodeAudioDickingAround"
-            ReferencedContainer = "container:CodeAudioDickingAround.xcodeproj">
+            BuildableName = "CoreAudioBookExamples"
+            BlueprintName = "CoreAudioBookExamples"
+            ReferencedContainer = "container:CoreAudioBookExamples.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CC5E1891224DFB8C00C08B41"
-            BuildableName = "CodeAudioDickingAround"
-            BlueprintName = "CodeAudioDickingAround"
-            ReferencedContainer = "container:CodeAudioDickingAround.xcodeproj">
+            BuildableName = "CoreAudioBookExamples"
+            BlueprintName = "CoreAudioBookExamples"
+            ReferencedContainer = "container:CoreAudioBookExamples.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -81,9 +81,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CC5E1891224DFB8C00C08B41"
-            BuildableName = "CodeAudioDickingAround"
-            BlueprintName = "CodeAudioDickingAround"
-            ReferencedContainer = "container:CodeAudioDickingAround.xcodeproj">
+            BuildableName = "CoreAudioBookExamples"
+            BlueprintName = "CoreAudioBookExamples"
+            ReferencedContainer = "container:CoreAudioBookExamples.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

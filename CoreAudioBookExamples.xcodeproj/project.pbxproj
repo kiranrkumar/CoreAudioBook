@@ -27,7 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CC5E1892224DFB8C00C08B41 /* CodeAudioDickingAround */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CodeAudioDickingAround; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5E1892224DFB8C00C08B41 /* CoreAudioBookExamples */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CoreAudioBookExamples; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5E1895224DFB8C00C08B41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC5E189C224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter1_OverviewOfCoreAudio.h; sourceTree = "<group>"; };
 		CC5E189D224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chapter1_OverviewOfCoreAudio.m; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		CC5E1889224DFB8C00C08B41 = {
 			isa = PBXGroup;
 			children = (
-				CC5E1894224DFB8C00C08B41 /* CodeAudioDickingAround */,
+				CC5E1894224DFB8C00C08B41 /* CoreAudioBookExamples */,
 				CC5E1893224DFB8C00C08B41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,12 +62,12 @@
 		CC5E1893224DFB8C00C08B41 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CC5E1892224DFB8C00C08B41 /* CodeAudioDickingAround */,
+				CC5E1892224DFB8C00C08B41 /* CoreAudioBookExamples */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CC5E1894224DFB8C00C08B41 /* CodeAudioDickingAround */ = {
+		CC5E1894224DFB8C00C08B41 /* CoreAudioBookExamples */ = {
 			isa = PBXGroup;
 			children = (
 				CC5E1895224DFB8C00C08B41 /* main.m */,
@@ -75,7 +75,7 @@
 				CC5E18A22250958F00C08B41 /* Chapter 2 - The Story of Sound */,
 				CC5E18A82250B52F00C08B41 /* Chapter 3 - Audio Data Formats */,
 			);
-			path = CodeAudioDickingAround;
+			path = CoreAudioBookExamples;
 			sourceTree = "<group>";
 		};
 		CC5E18A22250958F00C08B41 /* Chapter 2 - The Story of Sound */ = {
@@ -111,9 +111,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CC5E1891224DFB8C00C08B41 /* CodeAudioDickingAround */ = {
+		CC5E1891224DFB8C00C08B41 /* CoreAudioBookExamples */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CC5E1899224DFB8C00C08B41 /* Build configuration list for PBXNativeTarget "CodeAudioDickingAround" */;
+			buildConfigurationList = CC5E1899224DFB8C00C08B41 /* Build configuration list for PBXNativeTarget "CoreAudioBookExamples" */;
 			buildPhases = (
 				CC5E188E224DFB8C00C08B41 /* Sources */,
 				CC5E188F224DFB8C00C08B41 /* Frameworks */,
@@ -123,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = CodeAudioDickingAround;
+			name = CoreAudioBookExamples;
 			productName = CodeAudioDickingAround;
-			productReference = CC5E1892224DFB8C00C08B41 /* CodeAudioDickingAround */;
+			productReference = CC5E1892224DFB8C00C08B41 /* CoreAudioBookExamples */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -142,7 +142,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CC5E188D224DFB8C00C08B41 /* Build configuration list for PBXProject "CodeAudioDickingAround" */;
+			buildConfigurationList = CC5E188D224DFB8C00C08B41 /* Build configuration list for PBXProject "CoreAudioBookExamples" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -154,7 +154,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CC5E1891224DFB8C00C08B41 /* CodeAudioDickingAround */,
+				CC5E1891224DFB8C00C08B41 /* CoreAudioBookExamples */,
 			);
 		};
 /* End PBXProject section */
@@ -307,7 +307,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CC5E188D224DFB8C00C08B41 /* Build configuration list for PBXProject "CodeAudioDickingAround" */ = {
+		CC5E188D224DFB8C00C08B41 /* Build configuration list for PBXProject "CoreAudioBookExamples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC5E1897224DFB8C00C08B41 /* Debug */,
@@ -316,7 +316,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CC5E1899224DFB8C00C08B41 /* Build configuration list for PBXNativeTarget "CodeAudioDickingAround" */ = {
+		CC5E1899224DFB8C00C08B41 /* Build configuration list for PBXNativeTarget "CoreAudioBookExamples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC5E189A224DFB8C00C08B41 /* Debug */,
