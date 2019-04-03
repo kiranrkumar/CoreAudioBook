@@ -6,6 +6,8 @@
 //  Copyright © 2019 Kiran Kumar. All rights reserved.
 //
 
+#import "Chapter3_AudioDataFormats.h"
+
 #import <Foundation/Foundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 
