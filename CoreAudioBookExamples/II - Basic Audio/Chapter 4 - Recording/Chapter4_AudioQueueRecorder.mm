@@ -16,7 +16,11 @@ extern "C" {
 #endif
 
 #pragma mark - User Data Struct
-// Listing 4.3
+typedef struct MyRecorder {
+    AudioFileID     recordFile;
+    SInt64          recordPacket;
+    Boolean         running;
+} MyRecorder;
     
 #pragma mark - Utility Functions
 static void CheckError(OSStatus error, const char *operation) {
@@ -38,6 +42,8 @@ static void CheckError(OSStatus error, const char *operation) {
     
     exit(1);
 }
+    
+static void MyGetDefaultInputDeviceSampleRate(Float64 *sampleRate);
 // Listings 4.20 and 4.21
 // Listing 4.22
 // Listing 4.23
@@ -56,7 +62,16 @@ static void MyAQInputCallback(void *inUserData,
 void Chapter4_RecordWithAudioQueue()
 {
     // Set up format
-    // Listings 4.4 - 4.7
+    MyRecorder recorder = {0};
+    AudioStreamBasicDescription recordFormat;
+    memset(&recordFormat, 0, sizeof(recordFormat));
+    
+    recordFormat.mFormatID = kAudioFormatMPEG4AAC;
+    recordFormat.mChannelsPerFrame = 2;
+    MyGetDefaultInputDeviceSampleRate(&recordFormat.mSampleRate);
+    
+    UInt32 propertySize = sizeof(recordFormat);
+    CheckError(AudioFormatGetProperty(kAudioFormatProperty_FormatInfo, 0, NULL, &propertySize, &recordFormat), "AudioFormatGetProperty failed");
     
     // Set up queue
     // Listings 4.8 - 4.9
