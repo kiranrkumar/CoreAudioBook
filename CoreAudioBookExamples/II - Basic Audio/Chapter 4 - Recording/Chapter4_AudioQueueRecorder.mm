@@ -15,6 +15,8 @@
 extern "C" {
 #endif
 
+const int kNumRecordBuffers = 3;
+    
 #pragma mark - User Data Struct
 typedef struct MyRecorder {
     AudioFileID     recordFile;
@@ -43,8 +45,35 @@ static void CheckError(OSStatus error, const char *operation) {
     exit(1);
 }
     
-static void MyGetDefaultInputDeviceSampleRate(Float64 *sampleRate);
-// Listings 4.20 and 4.21
+static int MyComputeRecordBufferSize(const AudioStreamBasicDescription *format, AudioQueueRef queue, float seconds) { return 0; }
+static void MyCopyEncoderCookieToFile(AudioQueueRef queue, AudioFileID audioFile) {
+    OSStatus error;
+    UInt32 propertySize;
+    
+    error = AudioQueueGetPropertySize(queue, kAudioConverterCompressionMagicCookie, &propertySize);
+    
+    if (error == noErr && propertySize > 0) {
+        // Create buffer of bytes in which to hold the magic cookie
+        Byte *magicCookie = (Byte *)malloc(propertySize);
+        CheckError(AudioQueueGetProperty(queue, kAudioConverterCompressionMagicCookie, magicCookie, &propertySize), "Error getting the audio queue's magic cookie");
+        CheckError(AudioFileSetProperty(audioFile, kAudioFilePropertyMagicCookieData, propertySize, magicCookie), "Error setting the magic cookie data to the audio file");
+        free(magicCookie);
+    }
+}
+
+OSStatus MyGetDefaultInputDeviceSampleRate(Float64 *outSampleRate) {
+    OSStatus error;
+    AudioDeviceID deviceID = 0;
+    
+    AudioObjectPropertyAddress propertyAddress;
+    UInt32 propertySize;
+    propertyAddress.mSelector = kAudioHardwarePropertyDefaultInputDevice;
+    propertyAddress.mScope = kAudioObjectPropertyScopeGlobal;
+    propertyAddress.mElement = 0;
+    propertySize = sizeof(AudioDeviceID);
+    error = AudioObjectGetPropertyData(kAudioObjectSystemObject, &propertyAddress, 0, NULL, &propertySize, &deviceID);
+    return error;
+}
 // Listing 4.22
 // Listing 4.23
     
@@ -68,25 +97,52 @@ void Chapter4_RecordWithAudioQueue()
     
     recordFormat.mFormatID = kAudioFormatMPEG4AAC;
     recordFormat.mChannelsPerFrame = 2;
-    MyGetDefaultInputDeviceSampleRate(&recordFormat.mSampleRate);
+    CheckError(MyGetDefaultInputDeviceSampleRate(&recordFormat.mSampleRate), "Error getting device sample rate");
     
     UInt32 propertySize = sizeof(recordFormat);
     CheckError(AudioFormatGetProperty(kAudioFormatProperty_FormatInfo, 0, NULL, &propertySize, &recordFormat), "AudioFormatGetProperty failed");
     
     // Set up queue
-    // Listings 4.8 - 4.9
+    // Create the audio queue
+    AudioQueueRef queue = {0};
+    CheckError(AudioQueueNewInput(&recordFormat, MyAQInputCallback, &recorder, NULL, NULL, 0, &queue), "AudioQueueNewInput failed");
+    // Retrieve the filled-out ASBD from audio queue
+    UInt32 size = sizeof(recordFormat);
+    CheckError(AudioQueueGetProperty(queue, kAudioConverterCurrentOutputStreamDescription, &recordFormat, &size), "AudioQueueGetProperty failed to retrieve information for kAudioConverterCurrentOutputStreamDescription");
     
     // Set up file
-    // Listings 4.10 - 4.11
+    // Create audio file for output
+    CFURLRef myFileURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("chapter4Output.caf"), kCFURLPOSIXPathStyle, false);
+    CheckError(AudioFileCreateWithURL(myFileURL, kAudioFileCAFType, &recordFormat, kAudioFileFlags_EraseFile, &recorder.recordFile), "AudioFileCreateWithURL failed");
+    CFRelease(myFileURL);
+    
+    // Handle cookie (if it exists)
+    MyCopyEncoderCookieToFile(queue, recorder.recordFile);
     
     // Other setup as needed
-    // Listings 4.12 - 4.13
+    // Determine size of each buffer, and use that information to allocate and enqueue the buffers
+    int bufferByteSize = MyComputeRecordBufferSize(&recordFormat, queue, 0.5);
+    for (int bufferIx = 0; bufferIx < kNumRecordBuffers; ++bufferIx) {
+        AudioQueueBufferRef buffer;
+        CheckError(AudioQueueAllocateBuffer(queue, bufferByteSize, &buffer), "AudioQueueAllocateBuffer failed");
+        CheckError(AudioQueueEnqueueBuffer(queue, buffer, 0, NULL), "AudioQueueEnqueueBuffer failed");
+    }
     
-    // Start queue
-    // Listings 4.14 - 4.15
+    // Start recording, and stop when the user presses <return>
+    recorder.running = TRUE;
+    CheckError(AudioQueueStart(queue, NULL), "AudioQueueStart failed");
+    printf("Recording started...press <return> to stop:\n");
+    getchar();
     
     // Stop queue
-    // Listings 4.16 - 4.18
+    printf("Recording finished.\n");
+    recorder.running = FALSE;
+    CheckError(AudioQueueStop(queue, TRUE), "AudioQueueStop failed");
+    // Grab the updated magic cookie from the queue
+    MyCopyEncoderCookieToFile(queue, recorder.recordFile);
+    // Clean up audio queue and file
+    AudioQueueDispose(queue, TRUE);
+    AudioFileClose(recorder.recordFile);
 }
     
 #ifdef __cplusplus
