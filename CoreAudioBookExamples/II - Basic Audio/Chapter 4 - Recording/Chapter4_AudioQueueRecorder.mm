@@ -45,7 +45,41 @@ static void CheckError(OSStatus error, const char *operation) {
     exit(1);
 }
     
-static int MyComputeRecordBufferSize(const AudioStreamBasicDescription *format, AudioQueueRef queue, float seconds) { return 0; }
+static int MyComputeRecordBufferSize(const AudioStreamBasicDescription *format, AudioQueueRef queue, float seconds) {
+    int packets, frames, bytes;
+    frames = (int)ceil(seconds * format->mSampleRate);
+    
+    int bytesPerFrame = format->mBytesPerFrame;
+    BOOL isUncompressed = bytesPerFrame > 0;
+    if (isUncompressed) {
+        bytes = frames * bytesPerFrame;
+    } else {
+        UInt32 maxPacketSize;
+        if (format->mBytesPerPacket > 0) {
+            // constant packet size
+            maxPacketSize = format->mBytesPerPacket;
+        } else {
+            // get the largest single packet size possible
+            UInt32 propertySize = sizeof(maxPacketSize);
+            CheckError(AudioQueueGetProperty(queue, kAudioConverterPropertyMaximumOutputPacketSize, &maxPacketSize, &propertySize), "Error getting the queue's max packet size");
+        }
+        if (format->mFramesPerPacket > 0) {
+            packets = frames / format->mFramesPerPacket;
+        } else {
+            // Worst case-scenario: one packet in a frame
+            packets = frames;
+        }
+        
+        // Sanity check
+        if (packets == 0) {
+            packets = 1;
+        }
+        bytes = packets * maxPacketSize;
+    }
+    
+    return bytes;
+}
+
 static void MyCopyEncoderCookieToFile(AudioQueueRef queue, AudioFileID audioFile) {
     OSStatus error;
     UInt32 propertySize;
@@ -74,8 +108,6 @@ OSStatus MyGetDefaultInputDeviceSampleRate(Float64 *outSampleRate) {
     error = AudioObjectGetPropertyData(kAudioObjectSystemObject, &propertyAddress, 0, NULL, &propertySize, &deviceID);
     return error;
 }
-// Listing 4.22
-// Listing 4.23
     
 #pragma mark - Record Callback Function
 // Replace with Listings 4.24 - 4.26
