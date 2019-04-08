@@ -6,12 +6,12 @@
 //  Copyright © 2019 Kiran Kumar. All rights reserved.
 //
 
-#import "Chapter3_AudioDataFormats.h"
+#import "Chapter4_AudioQueueRecorder.h"
 
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Chapter3_WriteMultipleASBDs();
+        Chapter4_RecordWithAudioQueue();
     }
     return 0;
 }

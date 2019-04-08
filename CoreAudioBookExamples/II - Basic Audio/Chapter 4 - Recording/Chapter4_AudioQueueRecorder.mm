@@ -99,6 +99,7 @@ OSStatus MyGetDefaultInputDeviceSampleRate(Float64 *outSampleRate) {
     OSStatus error;
     AudioDeviceID deviceID = 0;
     
+    // Get default input device
     AudioObjectPropertyAddress propertyAddress;
     UInt32 propertySize;
     propertyAddress.mSelector = kAudioHardwarePropertyDefaultInputDevice;
@@ -106,6 +107,17 @@ OSStatus MyGetDefaultInputDeviceSampleRate(Float64 *outSampleRate) {
     propertyAddress.mElement = 0;
     propertySize = sizeof(AudioDeviceID);
     error = AudioObjectGetPropertyData(kAudioObjectSystemObject, &propertyAddress, 0, NULL, &propertySize, &deviceID);
+    if (error) {
+        return error;
+    }
+    
+    // If the device exists, get its sample rate
+    propertyAddress.mSelector = kAudioDevicePropertyNominalSampleRate;
+    propertyAddress.mScope = kAudioObjectPropertyScopeGlobal;
+    propertyAddress.mElement = 0;
+    propertySize = sizeof(Float64);
+    error = AudioObjectGetPropertyData(deviceID, &propertyAddress, 0, NULL, &propertySize, outSampleRate);
+    
     return error;
 }
     
@@ -117,7 +129,18 @@ static void MyAQInputCallback(void *inUserData,
                               const AudioTimeStamp *inStartTime,
                               UInt32 inNumPackets,
                               const AudioStreamPacketDescription *inPacketDesc)
-{}
+{
+    MyRecorder *recorder = (MyRecorder *)inUserData;
+    
+    if (inNumPackets > 0) {
+        CheckError(AudioFileWritePackets(recorder->recordFile, FALSE, inBuffer->mAudioDataByteSize, inPacketDesc, recorder->recordPacket, &inNumPackets, inBuffer->mAudioData), "Error writing packets to file");
+        recorder->recordPacket += inNumPackets;
+    }
+    
+    if (recorder->running) {
+        CheckError(AudioQueueEnqueueBuffer(inQueue, inBuffer, 0, NULL), "Error enqueing the audio buffer after writing to file");
+    }
+}
 
 #pragma mark - Entry Point
 void Chapter4_RecordWithAudioQueue()
