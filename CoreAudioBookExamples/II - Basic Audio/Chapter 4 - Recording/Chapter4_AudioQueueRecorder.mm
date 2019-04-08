@@ -89,7 +89,7 @@ static void MyCopyEncoderCookieToFile(AudioQueueRef queue, AudioFileID audioFile
     if (error == noErr && propertySize > 0) {
         // Create buffer of bytes in which to hold the magic cookie
         Byte *magicCookie = (Byte *)malloc(propertySize);
-        CheckError(AudioQueueGetProperty(queue, kAudioConverterCompressionMagicCookie, magicCookie, &propertySize), "Error getting the audio queue's magic cookie");
+        CheckError(AudioQueueGetProperty(queue, kAudioQueueProperty_MagicCookie, magicCookie, &propertySize), "Error getting the audio queue's magic cookie");
         CheckError(AudioFileSetProperty(audioFile, kAudioFilePropertyMagicCookieData, propertySize, magicCookie), "Error setting the magic cookie data to the audio file");
         free(magicCookie);
     }
@@ -143,7 +143,7 @@ static void MyAQInputCallback(void *inUserData,
 }
 
 #pragma mark - Entry Point
-void Chapter4_RecordWithAudioQueue()
+void Chapter4_RecordWithAudioQueue(void)
 {
     // Set up format
     MyRecorder recorder = {0};

@@ -13,7 +13,7 @@
 extern "C" {
 #endif
     
-void Chapter4_RecordWithAudioQueue();
+void Chapter4_RecordWithAudioQueue(void);
     
 #ifdef __cplusplus
 }
