@@ -22,7 +22,7 @@
  4. (Optional) Get audio units from nodes if you need to access any of the units directly
  5. Connect nodes
  6. Initialize the AUGraph
- 7. Star the AUGraph
+ 7. Start the AUGraph
  */
 
 #ifdef __cplusplus
@@ -100,9 +100,53 @@ extern "C" {
         
         // Get the reference to the AudioUnit object for the file player graph node
         CheckError(AUGraphNodeInfo(player->graph, filePlayerNode, NULL, &player->fileAU), "AUGraphNodeInfo failed to retrieve file player AU");
+        
+        // 4. Get AudioUnits from nodes (not done here)
+        
+        // 5. Connect nodes
+        // Connect the output of the file player node to the input of the output node
+        CheckError(AUGraphConnectNodeInput(player->graph, filePlayerNode, 0, outputNode, 0), "AUGraphConnectNodeInput failed to connect file player node to output node");
+        
+        // 6. Initialize the AUGraph
+        // Now initialize the graph (causes resources to be allocated)
+        CheckError(AUGraphInitialize(player->graph), "AUGraphInitialized failed");
     }
     
     // Listing 7.14 - 7.17
+    Float64 PrepareFileAU(KKAUGraphPlayer *player) {
+        
+        // Tell the file player unit to load the file we want to play
+        CheckError(AudioUnitSetProperty(player->fileAU, kAudioUnitProperty_ScheduledFileIDs, kAudioUnitScope_Global, 0, &player->inputFile, sizeof(player->inputFile)), "AudioUnitSetProperty failed to set input file to audio unit");
+        
+        // Schedule a region of audio to play - need to set up a ScheduledAudioFileRegion struct to do this (oof)
+        UInt64 nPackets;
+        UInt32 propSize = sizeof(nPackets);
+        CheckError(AudioFileGetProperty(player->inputFile, kAudioFilePropertyAudioDataPacketCount, &propSize, &nPackets), "AudioFileGetProperty failed to get number of packets");
+        
+        // Tell the file player AU to play the entire file
+        ScheduledAudioFileRegion region;
+        memset(&region.mTimeStamp, 0, sizeof(region.mTimeStamp));
+        region.mTimeStamp.mFlags = kAudioTimeStampSampleTimeValid;
+        region.mTimeStamp.mSampleTime = 0;
+        region.mCompletionProc = NULL;
+        region.mCompletionProcUserData = NULL;
+        region.mAudioFile = player->inputFile;
+        region.mLoopCount = 1;
+        region.mStartFrame = 0;
+        region.mFramesToPlay = (UInt32)(nPackets * player->inputFormat.mFramesPerPacket);
+        
+        CheckError(AudioUnitSetProperty(player->fileAU, kAudioUnitProperty_ScheduledFileRegion, kAudioUnitScope_Global, 0, &region, sizeof(region)), "AudioUnitSetProperty failed to set ScheduledFileRegion to audio unit");
+        
+        // Tell the file player AU when to start playing (a value of -1 means start at the next possible render cycle)
+        AudioTimeStamp startTime;
+        memset(&startTime, 0, sizeof(startTime));
+        startTime.mFlags = kAudioTimeStampSampleTimeValid;
+        startTime.mSampleTime = -1;
+        CheckError(AudioUnitSetProperty(player->fileAU, kAudioUnitProperty_ScheduleStartTimeStamp, kAudioUnitScope_Global, 0, &startTime, sizeof(startTime)), "Failed to set start time for file AU");
+        
+        // Calculate and return the file duration
+        return (nPackets * player->inputFormat.mFramesPerPacket) / player->inputFormat.mSampleRate;
+    }
     
 #pragma mark - Entry point
     void Chapter7_PlayFromFile(void)
