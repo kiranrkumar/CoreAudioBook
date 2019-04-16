@@ -13,6 +13,7 @@
 		CC5E18A1224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC5E18A0224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm */; };
 		CC5E18A5225095AA00C08B41 /* Chapter2_WaveformGenerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC5E18A3225095AA00C08B41 /* Chapter2_WaveformGenerator.mm */; };
 		CC5E18AB2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC5E18AA2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm */; };
+		CC89494D226590A9006CD704 /* Chapter7_FileBasedPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC89494B226590A9006CD704 /* Chapter7_FileBasedPlayer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,8 @@
 		CC5E18A72250A84600C08B41 /* Chapter2_WaveformDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter2_WaveformDefines.h; sourceTree = "<group>"; };
 		CC5E18A92250B56200C08B41 /* Chapter3_AudioDataFormats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter3_AudioDataFormats.h; sourceTree = "<group>"; };
 		CC5E18AA2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Chapter3_AudioDataFormats.mm; sourceTree = "<group>"; };
+		CC89494B226590A9006CD704 /* Chapter7_FileBasedPlayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Chapter7_FileBasedPlayer.mm; sourceTree = "<group>"; };
+		CC89494C226590A9006CD704 /* Chapter7_FileBasedPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter7_FileBasedPlayer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,7 @@
 				CC5E1895224DFB8C00C08B41 /* main.m */,
 				CC0502512254645900A33013 /* I - Understanding Core Audio */,
 				CC0502522254648300A33013 /* II - Basic Audio */,
+				CC89494E226590CC006CD704 /* III - Advanced Audio */,
 			);
 			path = CoreAudioBookExamples;
 			sourceTree = "<group>";
@@ -135,6 +139,23 @@
 				CC5E18AA2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm */,
 			);
 			path = "Chapter 3 - Audio Processing with Core Audio";
+			sourceTree = "<group>";
+		};
+		CC89494E226590CC006CD704 /* III - Advanced Audio */ = {
+			isa = PBXGroup;
+			children = (
+				CC89494F226590FE006CD704 /* Chapter 7 - Audio Units - Generators Effects and Rendering */,
+			);
+			path = "III - Advanced Audio";
+			sourceTree = "<group>";
+		};
+		CC89494F226590FE006CD704 /* Chapter 7 - Audio Units - Generators Effects and Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				CC89494B226590A9006CD704 /* Chapter7_FileBasedPlayer.mm */,
+				CC89494C226590A9006CD704 /* Chapter7_FileBasedPlayer.h */,
+			);
+			path = "Chapter 7 - Audio Units - Generators Effects and Rendering";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +216,7 @@
 			files = (
 				CC5E18A5225095AA00C08B41 /* Chapter2_WaveformGenerator.mm in Sources */,
 				CC5E1896224DFB8C00C08B41 /* main.m in Sources */,
+				CC89494D226590A9006CD704 /* Chapter7_FileBasedPlayer.mm in Sources */,
 				CC5E189E224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m in Sources */,
 				CC5E18A1224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm in Sources */,
 				CC5E18AB2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm in Sources */,
