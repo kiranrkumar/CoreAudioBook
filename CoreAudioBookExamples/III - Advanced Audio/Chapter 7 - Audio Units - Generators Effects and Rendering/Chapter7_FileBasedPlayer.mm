@@ -12,6 +12,19 @@
 
 #define kInputFileLocation CFSTR("/Users/kirankumar/IThoughtSheKnew_FullDraft1.mp3")
 
+/*
+ p. 133:
+ 
+ The proper order [of steps to create an audio graph] follows:
+ 1. Create the AUGraph
+ 2. Create nodes
+ 3. Open the graph
+ 4. (Optional) Get audio units from nodes if you need to access any of the units directly
+ 5. Connect nodes
+ 6. Initialize the AUGraph
+ 7. Star the AUGraph
+ */
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -49,6 +62,46 @@ extern "C" {
     }
     
     // Listing 7.7 - 7.13
+    void CreateMyAUGraph(KKAUGraphPlayer *player) {
+        /*/
+            Steps to create an AU graph as listed above
+         */
+        
+        // 1. Create a new AUGraph
+        CheckError(NewAUGraph(&player->graph), "NewAUGraph failed");
+        
+        // 2. Create and add the nodes.
+        // The nodes essentially act as wrappers around the around units, maintaining the relationships with other nodes (and subsequently, with other audio units) within the graph
+        
+        // Generate description that matches output device (speakers)
+        AudioComponentDescription outputcd = {0};
+        outputcd.componentType = kAudioUnitType_Output;
+        outputcd.componentSubType = kAudioUnitSubType_DefaultOutput;
+        outputcd.componentManufacturer = kAudioUnitManufacturer_Apple;
+        
+        // Add node with the above description to the output graph
+        AUNode outputNode;
+        CheckError(AUGraphAddNode(player->graph, &outputcd, &outputNode), "AUGraphAddNode failed to add output node");
+        
+        // Now, generate description that matches a generator AU of type: audio file player
+        AudioComponentDescription filePlayerCd = {0};
+        filePlayerCd.componentType = kAudioUnitType_Generator;
+        filePlayerCd.componentSubType = kAudioUnitSubType_AudioFilePlayer;
+        filePlayerCd.componentManufacturer = kAudioUnitManufacturer_Apple;
+        
+        // Add node with the above description to the output graph.
+        AUNode filePlayerNode;
+        CheckError(AUGraphAddNode(player->graph, &filePlayerCd, &filePlayerNode), "AUGraphAddNode failed to add file player node");
+        
+        // 3. Open the graph
+        
+        // Opening the graph opens all contained audio units but does not allocate any resources yet
+        CheckError(AUGraphOpen(player->graph), "AUGraphOpen failed");
+        
+        // Get the reference to the AudioUnit object for the file player graph node
+        CheckError(AUGraphNodeInfo(player->graph, filePlayerNode, NULL, &player->fileAU), "AUGraphNodeInfo failed to retrieve file player AU");
+    }
+    
     // Listing 7.14 - 7.17
     
 #pragma mark - Entry point
@@ -67,14 +120,26 @@ extern "C" {
         CheckError(AudioFileGetProperty(graphPlayer.inputFile, kAudioFilePropertyDataFormat, &propertySize, &graphPlayer.inputFormat), "Failed to get ASBD for audio file");
         
         // Build a basic fileplayer -> speakers graph
+        CreateMyAUGraph(&graphPlayer);
+        
         // Configure the file player
+        Float64 fileDuration = PrepareFileAU(&graphPlayer);
         // Listing 7.4
         
+        
         // Start playing
+        CheckError(AUGraphStart(graphPlayer.graph), "AUGraphStart failed");
+        
         // Sleep until the file is finished
+        usleep((int)(fileDuration * 1000.0 * 1000.0));
         // Listing 7.5
         
         // Cleanup
+        AUGraphStop(graphPlayer.graph);
+        AUGraphUninitialize(graphPlayer.graph);
+        AUGraphClose(graphPlayer.graph);
+        AudioFileClose(graphPlayer.inputFile);
+        
         // Listing 7.6
         
         
