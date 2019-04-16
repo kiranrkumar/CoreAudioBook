@@ -6,12 +6,12 @@
 //  Copyright © 2019 Kiran Kumar. All rights reserved.
 //
 
-#import "Chapter4_AudioQueueRecorder.h"
+#import "Chapter7_FileBasedPlayer.h"
 
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Chapter4_RecordWithAudioQueue();
+        Chapter7_PlayFromFile();
     }
     return 0;
 }
