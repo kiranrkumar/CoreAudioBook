@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC0502552254651400A33013 /* Chapter4_AudioQueueRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC0502542254651400A33013 /* Chapter4_AudioQueueRecorder.mm */; };
+		CC458AB0226AD9F6000B9BEC /* Chapter7_SpeechSynthesizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC458AAE226AD9F6000B9BEC /* Chapter7_SpeechSynthesizer.mm */; };
 		CC5E1896224DFB8C00C08B41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5E1895224DFB8C00C08B41 /* main.m */; };
 		CC5E189E224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5E189D224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m */; };
 		CC5E18A1224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC5E18A0224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		CC050253225464E200A33013 /* Chapter4_AudioQueueRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter4_AudioQueueRecorder.h; sourceTree = "<group>"; };
 		CC0502542254651400A33013 /* Chapter4_AudioQueueRecorder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Chapter4_AudioQueueRecorder.mm; sourceTree = "<group>"; };
+		CC458AAE226AD9F6000B9BEC /* Chapter7_SpeechSynthesizer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Chapter7_SpeechSynthesizer.mm; sourceTree = "<group>"; };
+		CC458AAF226AD9F6000B9BEC /* Chapter7_SpeechSynthesizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter7_SpeechSynthesizer.h; sourceTree = "<group>"; };
 		CC5E1892224DFB8C00C08B41 /* CoreAudioBookExamples */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CoreAudioBookExamples; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5E1895224DFB8C00C08B41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC5E189C224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chapter1_OverviewOfCoreAudio.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 			children = (
 				CC89494B226590A9006CD704 /* Chapter7_FileBasedPlayer.mm */,
 				CC89494C226590A9006CD704 /* Chapter7_FileBasedPlayer.h */,
+				CC458AAE226AD9F6000B9BEC /* Chapter7_SpeechSynthesizer.mm */,
+				CC458AAF226AD9F6000B9BEC /* Chapter7_SpeechSynthesizer.h */,
 			);
 			path = "Chapter 7 - Audio Units - Generators Effects and Rendering";
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				CC5E1896224DFB8C00C08B41 /* main.m in Sources */,
 				CC89494D226590A9006CD704 /* Chapter7_FileBasedPlayer.mm in Sources */,
 				CC5E189E224F22D000C08B41 /* Chapter1_OverviewOfCoreAudio.m in Sources */,
+				CC458AB0226AD9F6000B9BEC /* Chapter7_SpeechSynthesizer.mm in Sources */,
 				CC5E18A1224F278C00C08B41 /* Chapter2_TheStoryOfSound.mm in Sources */,
 				CC5E18AB2250B5B300C08B41 /* Chapter3_AudioDataFormats.mm in Sources */,
 				CC0502552254651400A33013 /* Chapter4_AudioQueueRecorder.mm in Sources */,
