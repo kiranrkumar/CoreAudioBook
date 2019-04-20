@@ -46,7 +46,7 @@ extern "C" {
         exit(1);
     }
     
-    void CreateMyAUGraph(KKAUGraphPlayer *player) {
+    void CreateKKAUGraph(KKAUGraphPlayer *player) {
         // Listing 7.21
         // Create a new AUGraph
         CheckError(NewAUGraph(&player->graph), "NewAUGraph() failed");
@@ -75,26 +75,37 @@ extern "C" {
         CheckError(AUGraphOpen(player->graph), "AUGraphOpen() failed");
         
         // Get the reference to the audio unit for the speech synthesis graph node
-        CheckError(AUGraphNodeInfo(player->graph, speechNode, &speechDescription, &player->speechAU), "AUGraphNodeInfo failed to get info for speech synthesis node");
+        CheckError(AUGraphNodeInfo(player->graph, speechNode, &speechDescription, &player->speechAU), "AUGraphNodeInfo failed to get speech synthesis AU");
 #ifdef PART_II
         // Listings 7.24 - 7.26
 #else
         // Listing 7.22
+        // Connect the output source of the speech synthesis AU
+        //  to the input source of the output node
+        CheckError(AUGraphConnectNodeInput(player->graph, speechNode, 0, outputNode, 0), "AUGraphConnectNodeInput failed");
+        
+        // Now initialize the graph (causes resources to be allocated)
+        CheckError(AUGraphInitialize(player->graph), "AUGraphInitialize() failed");
 #endif
     }
     
     // Listing 7.23
-    void PrepareSpeechAU(MyAUGraphPlayer *player) {
+    void PrepareSpeechAU(KKAUGraphPlayer *player) {
+        SpeechChannel chan;
         
+        UInt32 propSize = sizeof(SpeechChannel);
+        CheckError(AudioUnitGetProperty(player->speechAU, kAudioUnitProperty_SpeechChannel, kAudioUnitScope_Global, 0, &chan, &propSize), "AudioUnitGetProperty failed for speech channel");
+        
+        SpeakCFString(chan, CFSTR("Hello world"), NULL);
     }
     
 #pragma mark - Entry Point
     // Listing 7.20
-    void Chapter7_SynthesizeSpeech() {
+    void Chapter7_SynthesizeSpeech(void) {
         KKAUGraphPlayer graphPlayer = {0};
         
         // Build a basic speech->speakers graph
-        CreateMyAUGraph(&graphPlayer);
+        CreateKKAUGraph(&graphPlayer);
         
         // Configure the speech synthesizer
         PrepareSpeechAU(&graphPlayer);

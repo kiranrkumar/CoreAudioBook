@@ -12,7 +12,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    void Chapter7_SynthesizeSpeech();
+    void Chapter7_SynthesizeSpeech(void);
 #ifdef __cplusplus
 }
 #endif
