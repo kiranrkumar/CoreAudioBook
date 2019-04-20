@@ -31,7 +31,7 @@ extern "C" {
 
 #pragma mark - User Data Struct
     //Listing 7.2
-    typedef struct MYAUGraphPlayer {
+    typedef struct KKAUGraphPlayer {
         AudioStreamBasicDescription inputFormat;
         AudioFileID                 inputFile;
         
@@ -70,7 +70,7 @@ extern "C" {
         // 1. Create a new AUGraph
         CheckError(NewAUGraph(&player->graph), "NewAUGraph failed");
         
-        // 2. Create and add the nodes.
+        // 2. Create and add the nodes
         // The nodes essentially act as wrappers around the around units, maintaining the relationships with other nodes (and subsequently, with other audio units) within the graph
         
         // Generate description that matches output device (speakers)
@@ -83,7 +83,7 @@ extern "C" {
         AUNode outputNode;
         CheckError(AUGraphAddNode(player->graph, &outputcd, &outputNode), "AUGraphAddNode failed to add output node");
         
-        // Now, generate description that matches a generator AU of type: audio file player
+        // Now, generate a description that matches a generator AU of type: audio file player
         AudioComponentDescription filePlayerCd = {0};
         filePlayerCd.componentType = kAudioUnitType_Generator;
         filePlayerCd.componentSubType = kAudioUnitSubType_AudioFilePlayer;
@@ -101,7 +101,7 @@ extern "C" {
         // Get the reference to the AudioUnit object for the file player graph node
         CheckError(AUGraphNodeInfo(player->graph, filePlayerNode, NULL, &player->fileAU), "AUGraphNodeInfo failed to retrieve file player AU");
         
-        // 4. Get AudioUnits from nodes (not done here)
+        // 4. Get AudioUnits from nodes (skipping this step)
         
         // 5. Connect nodes
         // Connect the output of the file player node to the input of the output node
@@ -160,6 +160,7 @@ extern "C" {
         CheckError(AudioFileOpenURL(fileURL, kAudioFileReadPermission, 0, &graphPlayer.inputFile), "Failed to open audio file");
         CFRelease(fileURL);
         
+        // Get ASBD for audio file
         UInt32 propertySize = sizeof(graphPlayer.inputFormat);
         CheckError(AudioFileGetProperty(graphPlayer.inputFile, kAudioFilePropertyDataFormat, &propertySize, &graphPlayer.inputFormat), "Failed to get ASBD for audio file");
         
