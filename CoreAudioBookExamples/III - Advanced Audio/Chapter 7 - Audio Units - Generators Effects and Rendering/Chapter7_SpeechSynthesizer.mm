@@ -102,7 +102,7 @@ extern "C" {
         CheckError(AUGraphInitialize(player->graph), "AUGraphInitialize() failed");
         
         // Set the reverb preset for room size
-        UInt32 roomType = kReverbRoomType_LargeHall;
+        UInt32 roomType = kReverbRoomType_SmallRoom;
         CheckError(AudioUnitSetProperty(reverbUnit, kAudioUnitProperty_ReverbRoomType, kAudioUnitScope_Global, 0, &roomType, sizeof(UInt32)), "Failed to set reverb room type");
 #else
         // Listing 7.22
@@ -113,6 +113,8 @@ extern "C" {
         // Now initialize the graph (causes resources to be allocated)
         CheckError(AUGraphInitialize(player->graph), "AUGraphInitialize() failed");
 #endif
+        
+        CAShow(player->graph);
     }
     
     // Listing 7.23
@@ -122,7 +124,7 @@ extern "C" {
         UInt32 propSize = sizeof(SpeechChannel);
         CheckError(AudioUnitGetProperty(player->speechAU, kAudioUnitProperty_SpeechChannel, kAudioUnitScope_Global, 0, &chan, &propSize), "AudioUnitGetProperty failed for speech channel");
         
-        SpeakCFString(chan, CFSTR("Winslow is coot. Such a coot patter."), NULL);
+        SpeakCFString(chan, CFSTR("Winslow has such a coot little tail."), NULL);
     }
     
 #pragma mark - Entry Point
