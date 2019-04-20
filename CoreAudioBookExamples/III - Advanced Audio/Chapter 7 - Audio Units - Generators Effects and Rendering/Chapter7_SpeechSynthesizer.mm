@@ -11,7 +11,7 @@
 #include <AudioToolbox/AudioToolbox.h>
 #include <ApplicationServices/ApplicationServices.h>
 
-// #define PART_II
+ #define PART_II
 
 #ifdef __cplusplus
 extern "C" {
@@ -78,6 +78,32 @@ extern "C" {
         CheckError(AUGraphNodeInfo(player->graph, speechNode, &speechDescription, &player->speechAU), "AUGraphNodeInfo failed to get speech synthesis AU");
 #ifdef PART_II
         // Listings 7.24 - 7.26
+        // Generate a description that matches the reverb effect
+        AudioComponentDescription reverbDescription = {0};
+        reverbDescription.componentType = kAudioUnitType_Effect;
+        reverbDescription.componentSubType = kAudioUnitSubType_MatrixReverb;
+        reverbDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
+        
+        // Add a node with the description of the reverb to the graph
+        AUNode reverbNode;
+        CheckError(AUGraphAddNode(player->graph, &reverbDescription, &reverbNode), "AUGraphAddNode() failed to add reverb node");
+        
+        // Connect the output of the speech synthesis to the input of the reverb node
+        CheckError(AUGraphConnectNodeInput(player->graph, speechNode, 0, reverbNode, 0), "AUGraphConnectNodeInput() failed to connect speech synthesizer to reverb");
+        
+        // Connect the output of the reverb node to the input of the output node
+        CheckError(AUGraphConnectNodeInput(player->graph, reverbNode, 0, outputNode, 0), "AUGraphConnectNodeInput() failed to connect reverb node to output node");
+        
+        // Get the reference to the reverb AU
+        AudioUnit reverbUnit;
+        CheckError(AUGraphNodeInfo(player->graph, reverbNode, NULL, &reverbUnit), "AUGraphNodeInfo() failed to get reverb AU");
+        
+        // Now initialize the graph (causes resources to be allocated)
+        CheckError(AUGraphInitialize(player->graph), "AUGraphInitialize() failed");
+        
+        // Set the reverb preset for room size
+        UInt32 roomType = kReverbRoomType_LargeHall;
+        CheckError(AudioUnitSetProperty(reverbUnit, kAudioUnitProperty_ReverbRoomType, kAudioUnitScope_Global, 0, &roomType, sizeof(UInt32)), "Failed to set reverb room type");
 #else
         // Listing 7.22
         // Connect the output source of the speech synthesis AU
@@ -96,7 +122,7 @@ extern "C" {
         UInt32 propSize = sizeof(SpeechChannel);
         CheckError(AudioUnitGetProperty(player->speechAU, kAudioUnitProperty_SpeechChannel, kAudioUnitScope_Global, 0, &chan, &propSize), "AudioUnitGetProperty failed for speech channel");
         
-        SpeakCFString(chan, CFSTR("Hello world"), NULL);
+        SpeakCFString(chan, CFSTR("Winslow is coot. Such a coot patter."), NULL);
     }
     
 #pragma mark - Entry Point
