@@ -63,7 +63,7 @@ void Chapter7_CustomSineRendering(void) {
     sleep(5);
     
     // Clean up
-    AudioOutputUnitStop(player.outputUnit);
-    AudioUnitUninitialize(player.outputUnit);
-    AudioComponentInstanceDispose(player.outputUnit);
+    AudioOutputUnitStop(player.outputUnit); // Instead of AUGraphStop
+    AudioUnitUninitialize(player.outputUnit); // Instead of AUGraphUninitialize
+    AudioComponentInstanceDispose(player.outputUnit); // Instead of AUGraphClose
 }
