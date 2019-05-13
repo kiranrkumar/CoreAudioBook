@@ -124,7 +124,7 @@ extern "C" {
         UInt32 propSize = sizeof(SpeechChannel);
         CheckError(AudioUnitGetProperty(player->speechAU, kAudioUnitProperty_SpeechChannel, kAudioUnitScope_Global, 0, &chan, &propSize), "AudioUnitGetProperty failed for speech channel");
         
-        SpeakCFString(chan, CFSTR("Winslow has such a coot little tail."), NULL);
+        SpeakCFString(chan, CFSTR("Uhjz Buhjz Buhjz Buhjz"), NULL);
     }
     
 #pragma mark - Entry Point
