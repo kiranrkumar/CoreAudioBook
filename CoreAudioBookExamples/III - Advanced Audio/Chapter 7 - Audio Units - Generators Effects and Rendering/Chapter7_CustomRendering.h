@@ -11,4 +11,12 @@
 
 #include <stdio.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+    void Chapter7_CustomSineRendering(void);
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* Chapter7_CustomRendering_h */
